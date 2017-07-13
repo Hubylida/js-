@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .contain{
+            height: 758px;
+            position: relative;
+            background-color: #eee;
+            overflow: hidden;
+        }
+        #btn{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            width: 50px;
+            height: 30px;
+            font-size: 16px;
+            display: inline-block;
+            background-color: #ccc;
+            text-align: center;
+            line-height: 30px;
+        }
+        .p_2{
+            width: 500px;
+            display: inline-block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+
+        }
+        .p_1{
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 22px;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="contain">
+        <div type="button" id="btn">click</div>
+    </di>
+    <script>
+//         (function() {
+//         var lastTime = 0;
+//         var vendors = ['webkit', 'moz'];
+//         for(var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+//         window.requestAnimationFrame = window[vendors[x] + 'RequestAnimationFrame'];
+//         window.cancelAnimationFrame = window[vendors[x] + 'CancelAnimationFrame'] ||    // Webkit中此取消方法的名字变了
+//                                       window[vendors[x] + 'CancelRequestAnimationFrame'];
+//     }
+
+//     if (!window.requestAnimationFrame) {
+//         window.requestAnimationFrame = function(callback, element) {
+//             var currTime = new Date().getTime();
+//             var timeToCall = Math.max(0, 16.7 - (currTime - lastTime));
+//             var id = window.setTimeout(function() {
+//                 callback(currTime + timeToCall);
+//             }, timeToCall);
+//             lastTime = currTime + timeToCall;
+//             return id;
+//         };
+//     }
+//     if (!window.cancelAnimationFrame) {
+//         window.cancelAnimationFrame = function(id) {
+//             clearTimeout(id);
+//         };
+//     }
+// }());
+
+        var timer;
+        var btn = document.querySelector('#btn');
+        var contain = document.querySelector('contain');
+        btn.onclick = function(){
+            btn.style.backgroundColor = "#333";
+            btn.style.color = "#333";
+            btn.style.width = "50px";
+            btn.style.height = "50px";
+            btn.style.borderRadius = "50%";
+
+            timer = requestAnimationFrame(function fn(){
+                if(parseInt(btn.style.width) < 1700){
+                    btn.style.width = parseInt(btn.style.width) + 20 + 'px';
+                    btn.style.height = parseInt(btn.style.height) + 20 + 'px';
+                    timer = requestAnimationFrame(fn);
+                }
+                else {
+                    cancelAnimationFrame(timer);
+                    btn.style.borderRadius = "0";
+                    btn.style.width = "1536px";
+                    btn.style.height = "758px";
+                    btn.style.color = "#fff";
+                    btn.innerHTML = "";
+                   
+                    var p_1 = document.createElement('p');
+                    p_1.innerHTML = "hello world";
+                    var p_2 = document.createElement('span');
+                    p_2.innerHTML = "An optional ElementCreationOptions object containing a single property named is, whose value is the tag name for a custom element previously defined using customElements.define(). For backwards compatibility with previous versions of the Custom Elements specification, some browsers will allow you to pass a string here instead of an object, where the string's value is the custom element's tag name. See Extending native HTML elements for more information on how to use this parameter.";
+                    p_2.setAttribute('class','p_2');
+                    p_1.className = "p_1";
+                    btn.appendChild(p_1);
+                    btn.appendChild(p_2);
+                    
+
+                }
+            });
+        } 
+        btn.disabled = 'true';
+       
+    </script>
+</body>
+</html>
