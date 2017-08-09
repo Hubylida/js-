@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+    <title>进制转换</title>
+    <style>
+        html,body{
+            padding: 0;
+            margin: 0;
+            height: 100%;
+        }
+        .contain{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            width: 316px;
+            height: 300px;
+        }
+        .label{
+            width: 60px;
+            height: 30px;
+            display: inline-block;
+        }
+        .btn{
+            width: 80px;
+            height: 30px;
+            border: 2px solid #444;
+            background: transparent;
+            color: #000;
+            font-weight: 600;
+            outline: none;
+            cursor: pointer;
+        }
+        .btn:hover{
+            background: #e3e3e3;
+        }
+        .disabled{
+            color: #aaa;
+        }
+        .text{
+            width: 301px;
+            height: 32px;
+            border: 2px solid #444;
+            margin-top: 10px;
+            padding-left: 10px;
+            font-size: 16px;
+        }
+        #submit,#reset{
+            width: 155px;
+            line-height: 32px;
+            border: 2px solid #444;
+            background: transparent;
+            margin-top: 10px;
+            color: #000;
+            font-weight: 600;
+            letter-spacing: 1px;
+            outline: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #submit:hover,#reset:hover{
+            background: #e3e3e3;
+        }
+        #tip{
+            width: 315px;
+            line-height: 35px;
+            background: #e38383;
+            text-align: center;
+            display: none;
+        }
+        #sign{
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            font-size: 18px;
+            text-align: right;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="contain">
+        <div class="choose">
+            <span class="label">Form:</span>
+            <button type="button" class="btn" id="b_1">二进制</button>
+            <button type="button" class="btn" id="b_2">十进制</button>
+            <button type="button" class="btn" id="b_3">十六进制</button>
+            <br>
+            <span class="label">To:</span>
+            <button type="button" class="btn" id="b_4">二进制</button>
+            <button type="button" class="btn" id="b_5">十进制</button>
+            <button type="button" class="btn" id="b_6">十六进制</button>
+        </div>
+        <input type="text" name="text" class="text" id="input">
+        <br>
+        <input type="text" name="result" class="text" id="result">
+        <br>
+        <button id="submit">开始转换</button>
+        <button id="reset">重置</button>
+        <p id="tip"></p>
+    </div>
+    <div id="sign">
+        <span>—— by Yuan</span>
+        <br>
+        <span>2017-8-9</span> 
+    </div>
+ <script src="index.js"></script>
+</body>
+
+</html>
