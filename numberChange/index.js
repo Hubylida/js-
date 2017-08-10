@@ -11,42 +11,42 @@ $('.btn').on('click', function (e) {
             $('#b_4').addClass('disabled');
             $('#b_2').addClass('disabled');
             $('#b_3').addClass('disabled');
-            this.attr('disabled', 'disabled');
+            this.onclick = null;
             break;
         case "b_2":
             m = 10;
             $('#b_1').addClass('disabled');
             $('#b_3').addClass('disabled');
             $('#b_5').addClass('disabled');
-            this.attr('disabled', 'disabled');
+            this.onclick = null;
             break;
         case "b_3":
             m = 16;
             $('#b_1').addClass('disabled');
             $('#b_2').addClass('disabled');
             $('#b_6').addClass('disabled');
-            this.attr('disabled', 'disabled');
+            this.onclick = null;
             break;
         case "b_4":
             n = 2;
             $('#b_1').addClass('disabled');
             $('#b_5').addClass('disabled');
             $('#b_6').addClass('disabled');
-            this.attr('disabled', 'disabled');
+            this.onclick = null;
             break;
         case "b_5":
             n = 10;
             $('#b_2').addClass('disabled');
             $('#b_4').addClass('disabled');
             $('#b_6').addClass('disabled');
-            this.attr('disabled', 'disabled');
+            this.onclick = null;
             break;
         case "b_6":
             n = 16;
             $('#b_3').addClass('disabled');
             $('#b_4').addClass('disabled');
             $('#b_5').addClass('disabled');
-            this.attr('disabled', 'disabled');
+            this.onclick = null;
             break;
     }
 })
@@ -64,7 +64,7 @@ $('#submit').on('click', function () {
         if (flag) {
             $('#result').val(resultArray.join(''));
         } else {
-            $('#result').val(resultArray.join('-', ''));
+            $('#result').val("-" + resultArray.join(''));
         }
 
     }
@@ -86,8 +86,8 @@ function change(x, y, n) {
         sixAry = new Array();
     var a, b, c, l, num = 0;
     var list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'a', 'b', 'c', 'd', 'e', 'f', 'g'];
-    if (parseInt(n) < 0) {
-        n = parseInt(n) * (-1);
+    if (n < 0) {
+        n = -n;
         flag = false;
     }
     if (x === 10 && y === 2) {
