@@ -3,48 +3,54 @@ var m = 0,
     input;
 var resultArray = new Array();
 var flag = true;
-$('#b_1').on('click', function () {
-    m = 2;
-    $('#b_4').addClass('disabled');
-    $('#b_2').addClass('disabled');
-    $('#b_3').addClass('disabled');
-    this.attr('disabled', 'disabled')
-});
-$('#b_2').on('click', function () {
-    m = 10;
-    $('#b_1').addClass('disabled');
-    $('#b_3').addClass('disabled');
-    $('#b_5').addClass('disabled');
-    this.attr('disabled', 'disabled')
-});
-$('#b_3').on('click', function () {
-    m = 16;
-    $('#b_1').addClass('disabled');
-    $('#b_2').addClass('disabled');
-    $('#b_6').addClass('disabled');
-    this.attr('disabled', 'disabled')
-});
-$('#b_4').on('click', function () {
-    n = 2;
-    $('#b_1').addClass('disabled');
-    $('#b_5').addClass('disabled');
-    $('#b_6').addClass('disabled');
-    this.attr('disabled', 'disabled')
-});
-$('#b_5').on('click', function () {
-    n = 10;
-    $('#b_2').addClass('disabled');
-    $('#b_4').addClass('disabled');
-    $('#b_6').addClass('disabled');
-    this.attr('disabled', 'disabled')
-});
-$('#b_6').on('click', function () {
-    n = 16;
-    $('#b_3').addClass('disabled');
-    $('#b_4').addClass('disabled');
-    $('#b_5').addClass('disabled');
-    this.attr('disabled', 'disabled')
-});
+$('.btn').on('click', function (e) {
+    var target = e.target;
+    switch (target.id) {
+        case "b_1":
+            m = 2;
+            $('#b_4').addClass('disabled');
+            $('#b_2').addClass('disabled');
+            $('#b_3').addClass('disabled');
+            this.attr('disabled', 'disabled');
+            break;
+        case "b_2":
+            m = 10;
+            $('#b_1').addClass('disabled');
+            $('#b_3').addClass('disabled');
+            $('#b_5').addClass('disabled');
+            this.attr('disabled', 'disabled');
+            break;
+        case "b_3":
+            m = 16;
+            $('#b_1').addClass('disabled');
+            $('#b_2').addClass('disabled');
+            $('#b_6').addClass('disabled');
+            this.attr('disabled', 'disabled');
+            break;
+        case "b_4":
+            n = 2;
+            $('#b_1').addClass('disabled');
+            $('#b_5').addClass('disabled');
+            $('#b_6').addClass('disabled');
+            this.attr('disabled', 'disabled');
+            break;
+        case "b_5":
+            n = 10;
+            $('#b_2').addClass('disabled');
+            $('#b_4').addClass('disabled');
+            $('#b_6').addClass('disabled');
+            this.attr('disabled', 'disabled');
+            break;
+        case "b_6":
+            n = 16;
+            $('#b_3').addClass('disabled');
+            $('#b_4').addClass('disabled');
+            $('#b_5').addClass('disabled');
+            this.attr('disabled', 'disabled');
+            break;
+    }
+})
+
 $('#submit').on('click', function () {
     if (m === 0 || n === 0) {
         if (m === 0 && n === 0) {
@@ -55,12 +61,12 @@ $('#submit').on('click', function () {
     } else {
         input = $('#input').val();
         resultArray = change(m, n, input);
-        if(flag){
+        if (flag) {
             $('#result').val(resultArray.join(''));
-        }else{
-            $('#result').val(resultArray.join('-',''));
+        } else {
+            $('#result').val(resultArray.join('-', ''));
         }
-        
+
     }
 });
 $('#reset').on('click', function () {
@@ -68,7 +74,7 @@ $('#reset').on('click', function () {
         if (($('#input').val() === '') && ($('#result').val() === '')) {
             Tip('您未填写内容');
         }
-    }else{
+    } else {
         $('#input').val('');
         $('#result').val('');
     }
@@ -80,7 +86,7 @@ function change(x, y, n) {
         sixAry = new Array();
     var a, b, c, l, num = 0;
     var list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'a', 'b', 'c', 'd', 'e', 'f', 'g'];
-    if(parseInt(n) < 0){
+    if (parseInt(n) < 0) {
         n = parseInt(n) * (-1);
         flag = false;
     }
@@ -115,9 +121,9 @@ function change(x, y, n) {
         d = n.toString();
         sixAry = d.split('');
         l = sixAry.length;
-        for(var i = 0; i < l; i++){
-            for(var j = 0; j < 16; j++){
-                if(sixAry[i] == list[j]){
+        for (var i = 0; i < l; i++) {
+            for (var j = 0; j < 16; j++) {
+                if (sixAry[i] == list[j]) {
                     sixAry[i] = j;
                 }
             }
@@ -148,9 +154,9 @@ function change(x, y, n) {
         c = n.toString();
         sixAry = c.split('');
         l = sixAry.length;
-        for(var i = 0; i < l; i++){
-            for(var j = 0; j < 16; j++){
-                if(sixAry[i] == list[j]){
+        for (var i = 0; i < l; i++) {
+            for (var j = 0; j < 16; j++) {
+                if (sixAry[i] == list[j]) {
                     sixAry[i] = j;
                 }
             }
@@ -163,7 +169,7 @@ function change(x, y, n) {
             result.push(d);
             num = Math.floor(parseInt(num / 2));
         }
-        result.reverse();        
+        result.reverse();
     }
     return result;
 }
