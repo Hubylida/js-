@@ -2,6 +2,7 @@ var m = 0,
     n = 0,
     input;
 var resultArray = new Array();
+var flag = true;
 $('#b_1').on('click', function () {
     m = 2;
     $('#b_4').addClass('disabled');
@@ -54,7 +55,12 @@ $('#submit').on('click', function () {
     } else {
         input = $('#input').val();
         resultArray = change(m, n, input);
-        $('#result').val(resultArray.join(''));
+        if(flag){
+            $('#result').val(resultArray.join(''));
+        }else{
+            $('#result').val(resultArray.join('-',''));
+        }
+        
     }
 });
 $('#reset').on('click', function () {
@@ -74,6 +80,10 @@ function change(x, y, n) {
         sixAry = new Array();
     var a, b, c, l, num = 0;
     var list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'a', 'b', 'c', 'd', 'e', 'f', 'g'];
+    if(parseInt(n) < 0){
+        n = parseInt(n) * (-1);
+        flag = false;
+    }
     if (x === 10 && y === 2) {
         while (n) {
             a = n % y;
@@ -155,7 +165,7 @@ function change(x, y, n) {
         }
         result.reverse();        
     }
-   return result;
+    return result;
 }
 
 function Tip(content) {
