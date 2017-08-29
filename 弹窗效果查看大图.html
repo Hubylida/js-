@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,10 +8,30 @@
     <link rel="stylesheet" href="https://cdn.bootcss.com/normalize/7.0.0/normalize.css">
     <title>弹窗</title>
     <style>
-        #pic{
-            width: 30vw;
+        body {
+            background: #262626;
+            box-shadow: inset 0 0 12px 1px #eee;
+            height: 100vh;
         }
-        .bg-contain{
+
+        .contain {
+            width: 100vw;
+            height: 100vh;
+        }
+
+        #pic {
+            display: block;
+            width: 50vw;
+            margin: 0 auto;
+        }
+
+        #btn {
+            display: block;
+            padding: 8px;
+            margin: 10px auto;
+        }
+
+        .bg-contain {
             width: 100vw;
             height: 100vh;
             background: rgba(0, 0, 0, 0.4);
@@ -19,35 +40,43 @@
             left: 0px;
             top: 0px;
         }
-        .pic-contain{
+
+        .pic-contain {
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%,-50%);
+            transform: translate(-50%, -50%);
+        }
+
+        #big-pic {
+            width: 70vw;
         }
     </style>
 </head>
+
 <body>
     <div class="contain">
         <img src="http://ou2r9nim8.bkt.clouddn.com/8194.png" alt="" id="pic">
-        <br>
         <button id="btn">点击查看大图</button>
-        <div class="bg-contain">
-            <div class="pic-contain">
-                <img src="http://ou2r9nim8.bkt.clouddn.com/8194.png" alt="" id="big-pic">
-            </div>
+    </div>
+    <div class="bg-contain">
+        <div class="pic-contain">
+            <img src="http://ou2r9nim8.bkt.clouddn.com/8194.png" alt="" id="big-pic">
         </div>
     </div>
     <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
     <script>
-        $(function(){
-            $('#btn').on('click',function(){
+        $(function () {
+            $('#btn').on('click', function () {
+                $('.contain').hide();
                 $('.bg-contain').show();
             })
-            $('.bg-contain').on('click',function(){
+            $('.bg-contain').on('click', function () {
                 $('.bg-contain').hide();
+                $('.contain').show();
             })
         })
     </script>
 </body>
+
 </html>
