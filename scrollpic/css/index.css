@@ -1,0 +1,115 @@
+* {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.clearf::before {
+    content: " ";
+    display: block;
+    clear: both;
+    height: 0;
+    line-height: 0;
+    visibility: hidden;
+}
+
+.clearf::after {
+    content: " ";
+    display: block;
+    clear: both;
+    height: 0;
+    line-height: 0;
+    visibility: hidden;
+}
+
+.window,
+.pic-list,
+.pic {
+    height: 500px;
+}
+
+.window {
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+}
+
+.pic-list {
+    width: 300%;
+    position: absolute;
+    left: 0;
+    transition: left 800ms ease-out;
+}
+
+.pic {
+    width: 100vw;
+    float: left;
+    background-size: cover;
+    background-position: center 0;
+}
+
+.btn-control {
+    padding: 20px 0;
+    background: #ddd;
+    height: 61px;
+    text-align: center;
+}
+
+.btn-wrap {
+    display: inline;
+}
+
+.btn {
+    display: inline-block;
+    width: 45px;
+    height: 21px;
+    padding: 8px 0;
+    background-clip: content-box;
+    background-color: #D2C0C0;
+    cursor: pointer;
+    user-select: none;
+}
+
+.active {
+    display: inline-block;
+    width: 45px;
+    height: 21px;
+    padding: 8px 0;
+    background-clip: content-box;
+    background-color: #fff;
+    cursor: pointer;
+    border-radius: 2px;
+    user-select: none;
+}
+@media screen and (max-width: 1024px) and (min-width:768px){
+    .pic-list{
+        transition: left 400ms ease-out;
+    }
+}
+@media screen and (max-width:768px)and(min-width:414px) {
+    .window,
+    .pic-list,
+    .pic {
+        height: 250px;
+    }
+    .pic-list{
+        transition: left 200ms ease-out;
+    }
+}
+
+@media screen and (max-width:414px) {
+    .window,
+    .pic-list,
+    .pic {
+        height: 200px;
+    }
+    .pic-list{
+        transition: left 400ms ease-out;
+    }
+}
