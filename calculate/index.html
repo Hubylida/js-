@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://cdn.bootcss.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.bootcss.com/normalize/7.0.0/normalize.min.css" rel="stylesheet">
+  <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <title>计算</title>
+  <style>
+    body {
+      width: 100%;
+      height: 100vh;
+      position: relative;
+      background: #eee;
+    }
+
+    #box {
+      position: absolute;
+      top: 48%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 36vw;
+      border-radius: .5em;
+      background: #fef6ef;
+      padding: 1em;
+      box-shadow: 0 0 10px rgba(0, 0, 0, .15), 0 3px 3px rgba(0, 0, 0, .15);
+    }
+
+    #input {
+      width: 80%;
+      display: inline-block;
+    }
+
+    #item-1,
+    #item-2 {
+      margin: 1em;
+    }
+
+    #item-2 {
+      height: 3em;
+    }
+    @media screen and (max-width:1200px){
+      #box{
+        width: 45vw;
+      }
+    }
+    @media screen and (max-width:768px){
+      #box{
+        width: 70vw;
+      }
+    }
+    @media screen and (max-width:450px){
+      #box{
+        width: 91vw;
+      }
+      #input{
+        width:77%;
+      }
+    }
+    @media screen and (max-width:380px){
+      #input{
+        width: 70%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box">
+    <div id="item-1">
+      <label for="input">请输入欧元：</label>
+      <div class="form-group">
+        <input type="text" class="form-control" id="input" placeholder="请输入数字" autocomplete="off">
+        <button type="button" id="cal" class="btn btn-info">计算</button>
+      </div>
+    </div>
+    <div id="item-2">
+      <p>
+        <span>结果：</span>
+        <span id="output"></span>
+      </p>
+
+    </div>
+  </div>
+  <script>
+    $('#cal').on('click', function () {
+      var inputValue = $('#input').val(),
+        result;
+      if (isNaN(inputValue)) {
+        $('#output').text('输入错误!');
+        $('#input').val('');
+      } else if (inputValue < 0) {
+        $('#output').text('输入不能为负!');
+        $('#input').val('')
+      } else {
+        inputValue = parseFloat(inputValue);
+      }
+      switch (true) {
+        case inputValue == 0:
+          result = 0;
+          $('#output').text(result+' 元');
+          break;
+        case inputValue <= 7 && inputValue > 0:
+          result = (inputValue + 3) * 8;
+          $('#output').text(result+' 元');
+          break;
+        case inputValue > 7 && inputValue <= 13:
+          result = (inputValue + 4) * 8;
+          $('#output').text(result+' 元');
+          break;
+        case inputValue > 13 && inputValue <= 25:
+          result = (inputValue + 5) * 8;
+          $('#output').text(result+' 元');
+          break;
+        case inputValue > 25 && inputValue <= 50:
+          result = 8 * inputValue * 1.2;
+          $('#output').text(result+' 元');
+          break;
+        case inputValue > 50 && inputValue <= 150:
+          result = 8 * inputValue * 1.18;
+          $('#output').text(result+' 元');
+          break;
+        case inputValue > 150:
+          $('#output').text('输入不能超过150');
+      }
+      // $.ajax({
+      //   url: 'data',
+      //   type: 'post',
+      //   data:{
+      //     input: inputValue,
+      //     output: result
+      //   },
+      //   success:function(data){
+      //     console.log(data);
+      //   }
+      // });
+    })
+  </script>
+</body>
+
+</html>
